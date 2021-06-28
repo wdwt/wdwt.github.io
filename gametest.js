@@ -1,22 +1,21 @@
-//https://p5js.org/examples/structure-create-graphics.html
-var video;
+// ICM-2016
 
-function setup(){
-  createCanvas(600, 500);
-  video = createCapture(VIDEO);
-  video.size(400, 300);
-  // video.hide();
+// Take a look at the HTML file where some things have been
+// added for mobile viewing
+
+function setup() {
+  // Make the canvas the size of the mobile device screen
+  createCanvas(windowWidth, windowHeight);
+  background(200);
 }
 
-function draw(){
-  fill(0, 12);
-  rect(0, 0, width, height);
-  fill(255);
-  noStroke();
-  image(video,mouseX- 100, mouseY, 60, 60);
-}
+function touchMoved() {
+  strokeWeight(10);
+  console.log(mouseX);
+  stroke(0,255,0);
+  // For single touch mouseX and mouseY work just fine
+  line(mouseX, mouseY, pmouseX, pmouseY);
 
- function mousePressed(){
-   fill(0);
-   rect(0, 0, width, height);
- }
+  // This prevents dragging screen around
+  return false;
+}
